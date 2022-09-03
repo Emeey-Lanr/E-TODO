@@ -1,9 +1,10 @@
-*{
+* {
     padding: 0;
     margin: 0;
-   
+
 }
-.inputhouse{
+
+.inputhouse {
     width: 50%;
     margin: auto;
     border: 1px solid #1314143b;
@@ -15,69 +16,80 @@
 
 
 }
-.inputhouse.input{
+
+.inputhouse.input {
     width: 80%;
     margin: auto;
-    
+
 }
-.inputhouse input{
+
+.inputhouse input {
     width: 100%;
     display: block;
     border: none;
 }
-.inputhouse input:focus{
+
+.inputhouse input:focus {
     outline: none;
 }
 
-.inputhouse .title{
+.inputhouse .title {
     font-size: 1rem;
     font-weight: 500;
-    
+
 }
 
-.inputhouse .date{
+.inputhouse .date {
     border: 2px solid #000000b7;
     border-radius: 5px;
 }
-.inputhouse textarea{
+
+.inputhouse textarea {
     width: 100%;
     height: 100px;
     resize: none;
     border: none;
 }
-.inputhouse textarea:focus{
+
+.inputhouse textarea:focus {
     outline: none;
 }
-.inputhouse button{
+
+.inputhouse button {
     border: none;
     background: none;
     color: #0c56df;
     margin-top: 20px;
 
 }
-.addremovebtn{
+
+.addremovebtn {
     width: 50%;
     margin: auto;
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-.addremovebtn button{
-   
+
+.addremovebtn button {
+
     margin: 0 10px;
     padding: 10px 20px;
     border: none;
 
 
 }
-.addremovebtn .cancel{
+
+.addremovebtn .cancel {
     color: #000000b7;
 }
-.addremovebtn .add{
+
+.addremovebtn .add {
     background: #0c56df;
     color: white;
 }
-.settime{
+
+.settime {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -88,33 +100,45 @@
     align-items: center;
 
 }
-.settime div{
+
+.settime div {
     width: 30%;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
+    animation: settime 1 0.9s running normal;
 }
-.settime input{
+
+@keyframes settime {
+    0% {
+        transform: translateX(10px);
+    }
+
+}
+
+.settime input {
     display: block;
     width: 50%;
     margin-bottom: 10px;
     height: 40px;
-    
+
 }
-.settime input:focus{
+
+.settime input:focus {
     outline: none;
     padding: 0 0 0 4px;
 }
-.settime button{
+
+.settime button {
     display: block;
     border: none;
-     background: none;
-     color: #0c56df;
-    
+    background: none;
+    color: #0c56df;
+
 }
 
 /* ================= */
-.editspace{
+.editspace {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -124,78 +148,128 @@
     justify-content: center;
     align-items: center;
 }
-.editspace .editspaceform{
+
+.editspace .editspaceform {
     width: 30%;
     background-color: white;
-    padding:10px 6px;
+    padding: 10px 6px;
     border-radius: 5px;
     animation: space 1 0.9s running normal;
 }
+
 @keyframes space {
-    0%{
+    0% {
         transition: 1s all ease-out;
         opacity: 0;
         transform: translateX(20px);
     }
-    
+
 }
-.editspace .editspaceform input{
+
+.editspace .editspaceform input {
     display: block;
     margin-bottom: 15px;
 }
-.editspace input:focus{
+
+.editspace input:focus {
     outline: none;
 }
-.editspace textarea:focus{
+
+.editspace textarea:focus {
     outline: none;
 }
-.editspace .editspaceform .edittitlespace{
+
+.editspace .editspaceform .edittitlespace {
     border: none;
     border-bottom: 1px solid #00000044;
     width: 100%;
 }
-.editspace .editspaceform textarea{
+
+.editspace .editspaceform textarea {
     resize: none;
     width: 100%;
     height: 80px;
     border: 1px solid #00000044;
 }
+
 .editspace .editspaceform .changetime span {
     color: #0c56df;
     font-weight: 500;
     padding-bottom: 10px;
 }
-.editspaceform p{
+
+.editspaceform p {
     color: #0c56df;
     font-weight: 500;
 }
-.editspace .editspaceform .changetime input{
+
+.editspace .editspaceform .changetime input {
     border: 1px solid #00000044;
     margin-top: 5px;
 }
-h3{
+
+h3 {
     text-align: center;
     color: #0c56df;
     border-bottom: 1px solid #0c56df63;
     margin-bottom: 10px;
 }
-.editspacebtn{
+
+.editspacebtn {
     display: flex;
     justify-content: center;
 }
-.editspacebtn button{
+
+.editspacebtn button {
     border: none;
     padding: 10px 10px;
     background-color: #0c56df;
     color: white;
+
 }
-.canceleditspace{
+
+.canceleditspace {
     display: flex;
     justify-content: end;
     padding: 5px 0px;
 }
-.canceleditspace button{
+
+.canceleditspace button {
     border: none;
     background: none;
     color: #0c56df;
+}
+
+@media (max-width:1000px) {
+    .inputhouse {
+        width: 80%;
+    }
+
+    .editspace .editspaceform {
+        width: 80%;
+    }
+
+    .settime div {
+        width: 70%;
+    }
+}
+
+@media (max-width:600px) {
+    .inputhouse {
+        width: 90%;
+    }
+}
+
+@media (max-width:400px) {
+    .inputhouse {
+        width: 95%;
+    }
+
+    .editspacebtn button {
+        border-radius: 30px;
+    }
+
+    .editspace .editspaceform {
+        width: 95%;
+    }
 }

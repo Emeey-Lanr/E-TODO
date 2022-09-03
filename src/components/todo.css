@@ -1,9 +1,10 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.todolist{
+
+.todolist {
     width: 50%;
     margin: 0 auto;
     border-bottom: 1px solid #22232533;
@@ -14,28 +15,52 @@
     align-items: flex-end;
     padding: 0 10px;
 }
-.todolist .todoheading{
+
+.todolist .todoheading {
     font-weight: 500;
     font-size: 1rem;
     padding: 5px 0;
 }
-.todolist .todobody{
+
+.todolist .todobody {
     font-size: 0.9rem;
     font-weight: 400;
     padding: 5px;
 }
-.todolist button{
+
+.todolist button {
     border: none;
     background: none;
     margin: 0 6px;
     color: #222325ec;
 }
-.todolist .time{
+
+.todolist .time {
     padding: 1px;
     color: #295bbeec;
     font-weight: 500;
 }
-.todolist .itemdate{
+
+.todolist .itemdate {
     color: #222325ec;
     font-size: 0.9rem;
+}
+
+@media (max-width:1000px) {
+    .todolist {
+        width: 80%;
+    }
+}
+
+@media (max-width:600px) {
+    .todolist {
+        width: 90%;
+    }
+}
+
+@media (max-width:400px) {
+    .todolist {
+        width: 95%;
+    }
+
 }

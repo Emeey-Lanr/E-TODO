@@ -5,13 +5,13 @@ import Icon from './components/Icon'
 import Input from './components/Input'
 import Notodo from './components/Notodo'
 import Addtask from './components/Addtask'
-const App  = ()=>{
+const App = () => {
   const ddate = new Date()
   const houur = ddate.getHours()
   const [landing, setlanding] = useState(true)
   const [notodo, setnotodo] = useState(true)
   const [todo, setodo] = useState(false)
-  const [input, setinput]= useState(false)
+  const [input, setinput] = useState(false)
   const [addtaskbtn, setaddtaskbtn] = useState(true)
   //================EDIT=======================
   const [hideedit, sethideedit] = useState(false)
@@ -22,9 +22,9 @@ const App  = ()=>{
   const [editdate, seteditdate] = useState('')
   const [editeditlisthour, seteditlisthours] = useState('')
   const [edittodominutes, setteditodominutes] = useState('')
-  const [prevcontent, setprev]= useState({})
+  const [prevcontent, setprev] = useState({})
   const [showinfow, setshowinfo] = useState(false)
-  let editedtask ={todoTitle:edittitle, todoDescription:editdescription, todoDate:editdate, todoHour:editeditlisthour, todoMinutes:edittodominutes}
+  let editedtask = { todoTitle: edittitle, todoDescription: editdescription, todoDate: editdate, todoHour: editeditlisthour, todoMinutes: edittodominutes }
 
   //=========================================== 
   const [title, setTitle] = useState('')
@@ -32,72 +32,113 @@ const App  = ()=>{
   const [date, setdate] = useState('')
   const [listhour, setlisthours] = useState('')
   const [todominutes, settodominutes] = useState('')
-  const [hours, sethours] = useState(ddate.getHours())
-  const [minutes, setminutes] = useState(ddate.getMinutes())
-  const [todolist, settodolist]= useState([])
-  let todoDetails = {todoTitle:title, todoDescription:description, todoDate:date, todoHour:listhour, todoMinutes:todominutes}
-useEffect(()=>{
-  setTimeout(()=>{
-    setlanding(false)
-    console.log(hours, minutes)
-    setshowinfo(true)
-},5000)
-})
- 
+  // const [hours, sethours] = useState(ddate.getHours())
+  // const [minutes, setminutes] = useState(ddate.getMinutes())
+  const [todolist, settodolist] = useState([])
+  let todoDetails = { todoTitle: title, todoDescription: description, todoDate: date, todoHour: listhour, todoMinutes: todominutes }
+  useEffect(() => {
+    setTimeout(() => {
+      setlanding(false)
+
+      setshowinfo(true)
+    }, 5000)
+  })
 
 
-  const addtask = ()=>{
-   setinput(true)
-   setaddtaskbtn(false)
+
+  const addtask = () => {
+    setinput(true)
+    setaddtaskbtn(false)
   }
-  const removetaskinput = ()=>{
-  setinput(false)
-  setaddtaskbtn(true)
-  }
-  const showtodolist =()=>{
+  const removetaskinput = () => {
     setinput(false)
-    setodo(true)
     setaddtaskbtn(true)
-    console.log(title, description, date)
-    settodolist([...todolist,todoDetails])
   }
-  const editTodo = (id)=>{
+  const showtodolist = () => {
+    if (title === '') {
+      alert('input something')
+    } else {
+      setinput(false)
+      setodo(true)
+      setaddtaskbtn(true)
+      console.log(title, description, date)
+      settodolist([...todolist, todoDetails])
+    }
+  }
+  const editTodo = (id) => {
     console.log(id)
-     seteditindex(id)
-     
-     sethideedit(true)
-     setprev(todolist[id])
-     console.log(prevcontent)
-     
-//  seteditbtn(false)
+    seteditindex(id)
+
+    sethideedit(true)
+    setprev(todolist[id])
+    console.log(prevcontent)
+
+    //  seteditbtn(false)
   }
-  const saveeditTodo = ()=>{
-    todolist[ediit] = editedtask
-    settodolist(todolist)
-    sethideedit(false)
+  const saveeditTodo = () => {
+    if (edittitle === '' || editdescription === '') {
+      alert(`Can't edit an empty input`)
+    } else {
+      todolist[ediit] = editedtask
+      settodolist(todolist)
+      sethideedit(false)
+    }
 
   }
-  const removeeditpage = ()=>{
+  //modal for add time
+  const [timeadd, setimeadded] = useState('')
+  const [modalsettime, setmodalsettime] = useState(false)
+  const addsetime = () => {
+    if (listhour == '' && todominutes == '') {
+      setimeadded('No time added')
+      setTimeout(() => {
+        setmodalsettime(false)
+        setimeadded('')
+
+      }, 1000)
+
+    } else if (listhour == '') {
+      setimeadded('Add minutes')
+
+    } else {
+      setimeadded('Time Added')
+      setTimeout(() => {
+        setmodalsettime(false)
+        setimeadded('')
+
+      }, 1000)
+    }
+  }
+
+  const addtime = () => {
+    setmodalsettime(true)
+  }
+  const timegone = () => {
+    setlisthours('')
+    settodominutes('')
+    setmodalsettime(false)
+  }
+  const removeeditpage = () => {
     sethideedit(false)
   }
-  const deleteTodo = (id)=>{
-    settodolist(todolist.filter((items, index)=>{
-      return(
+  const deleteTodo = (id) => {
+    settodolist(todolist.filter((items, index) => {
+      return (
         id !== index
       )
     }))
   }
-  return(
+  return (
     <>
-    {landing && <Landingpage/>}
-   {showinfow && <div>
-      <h1>E-TODO</h1>
-      {notodo && <Notodo/>}
-      {todo && <Todo todolist={todolist} showedit={hideedit} editTodo={editTodo} editid={ediit} savedit={saveeditTodo} editbtn={editbtn} removeditpage={removeeditpage} edititle={seteditTitle} editdescription={seteditDescription} editdate={seteditdate} edithour={seteditlisthours} editminutes={setteditodominutes} prevcontent={prevcontent} deleteTodo={deleteTodo}/>}
-      {input && <Input removeinput={removetaskinput} showlist={showtodolist} title={setTitle} description={setDescription} date={setdate} />}
-      {addtaskbtn && <Addtask addtaskbtn={addtask}/>}
-    </div>
-}
+      {landing && <Landingpage />}
+      {showinfow && <div>
+        <h1>E-TODO</h1>
+        {notodo && <Notodo />}
+        {todo && <Todo todolist={todolist} showedit={hideedit} editTodo={editTodo} editid={ediit} savedit={saveeditTodo} editbtn={editbtn} removeditpage={removeeditpage} edititle={seteditTitle} editdescription={seteditDescription} editdate={seteditdate} edithour={seteditlisthours} editminutes={setteditodominutes} prevcontent={prevcontent} deleteTodo={deleteTodo} />}
+        {input && <Input removeinput={removetaskinput} showlist={showtodolist} title={setTitle} description={setDescription} date={setdate} listhour={setlisthours} minutes={settodominutes} addsetime={addsetime} addtime={addtime} modalsettime={modalsettime} timeadd={timeadd} timegone={timegone} />}
+        {addtaskbtn && <Addtask addtaskbtn={addtask} />}
+      </div>
+      }
     </>
   )
 }
