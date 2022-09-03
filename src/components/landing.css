@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.icon{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconhouse .iconhouse1{
+    background-color: #0c56DF;
+padding: 10px;
+border-radius: 5px;
+animation: iconhouse infinite 5s running normal;
+}
+/* @keyframes iconhouse {
+    0%{
+        transition: 1s all ease-in;
+
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+} */
+.iconhouse1 .ball{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 40px;
+    
+}
+.icon .rod{
+    display: flex;
+    justify-content: center;
+}
+.iconhouse1 .rod .rod1{
+    width: 7px;
+    height: 50px;
+    transform:rotate(45deg);
+    background-color: white;
+}
+.iconhouse1 .rod .rod2{
+    width: 7px;
+    height: 50px;
+    transform:rotate(-45deg);
+    background-color: white;
+}
+.iconname{
+    padding-top: 20px;
+
+}
+.iconname p{
+
+    font-size: 2rem;
+    color: #0c56DF;
+    font-weight: 500;
+    animation: text 1 7s running normal;
+}
+
+@keyframes text {
+    0%{
+        transition: 1s all ease-out;
+        opacity: 0;
+    }
+}
